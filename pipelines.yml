@@ -28,10 +28,10 @@ pipelines:
         type: MvnBuild
         configuration:
           mvnCommand: install
-          resolverSnapshotRepo: bbb-gradle-dev
-          resolverReleaseRepo: bbb-gradle-dev
-          deployerSnapshotRepo: bbb-gradle-dev
-          deployerReleaseRepo: bbb-gradle-dev
+          resolverSnapshotRepo: lll
+          resolverReleaseRepo: lll
+          deployerSnapshotRepo: lll
+          deployerReleaseRepo: lll
 
           environmentVariables:
             JFROG_BUILD_STATUS: PASS
