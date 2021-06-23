@@ -1,5 +1,5 @@
 resources:
-  - name: git-resource
+  - name: gitResource2
     type: GitRepo
     configuration:
       path: lidorv/bbb
@@ -8,14 +8,14 @@ resources:
         pullRequestCreate: true
       branches:
         include: master
-  - name: build-info-resource
+  - name: buildInfoResource2
     type: BuildInfo
     configuration:
       sourceArtifactory: Artifactory_6
       buildName: BUILD-A
       buildNumber: $run_number
 pipelines:
-  - name: Pipeline-1
+  - name: Pipeline2
     configuration:
       environmentVariables:
         readOnly:
@@ -38,7 +38,7 @@ pipelines:
           integrations:
             - name: Artifactory_6
           inputResources:
-            - name: git-resource
+            - name: gitResource2
         execution:
           onFailure:
             - export JFROG_BUILD_STATUS=FAIL
@@ -49,12 +49,12 @@ pipelines:
         type: PublishBuildInfo
         configuration:
           inputResources:
-            - name: git-resource
+            - name: gitResource2
           outputResources:
-            - name: build-info-resource
+            - name: buildInfoResource2
           inputSteps:
             - name: Build
           forceXrayScan: true
         execution:
           onComplete:
-            - update_commit_status git-resource
+            - update_commit_status gitResource2
